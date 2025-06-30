@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unique Foods of Dire Dawa</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Simple extra styles for this page */
+    body {
+      padding: 40px;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #fff;
+      color: #333;
+      max-width: 900px;
+      margin: auto;
+    }
+    .back-button {
+        background-color: #2a5d84;
+        color: #fff;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 30px;
+        font-size: 1rem;
+        font-weight: 600;
+        cursor: pointer;
+        box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+        transition: background-color 0.3s, transform 0.2s;
+        margin-top: 30px;
+      }
+      
+      .back-button:hover {
+        background-color: #194263;
+        transform: translateY(-2px);
+      }
+      
+    h1 {
+      text-align: center;
+      margin-bottom: 40px;
+      color: #2c3e50;
+    }
+    .food-item {
+      display: flex;
+      gap: 30px;
+      margin-bottom: 50px;
+      align-items: center;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      padding: 20px;
+      background-color: #fafafa;
+      transition: box-shadow 0.3s ease;
+    }
+    .food-item:hover {
+      box-shadow: 0 8px 25px rgba(0,0,0,0.2);
+    }
+    .food-item img {
+      width: 200px;
+      height: 150px;
+      object-fit: cover;
+      border-radius: 15px;
+      flex-shrink: 0;
+    }
+    .food-text {
+      max-width: 600px;
+    }
+    .food-text h2 {
+      margin: 0 0 10px;
+      color: #0071e3;
+    }
+    .food-text p {
+      margin: 5px 0;
+      line-height: 1.5;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Unique Foods of Dire Dawa</h1>
+
+  <div class="food-item" id="shimo">
+    <img src="shimo.jpg" alt="Shimo Porridge" />
+    <div class="food-text">
+      <h2>Shimo</h2>
+      <p>Shimo is a traditional Ethiopian porridge made from millet or sorghum flour. It’s a staple comfort food in Dire Dawa, enjoyed especially during breakfast or as a nourishing meal. It has a smooth, creamy texture and is often accompanied by spicy sauces or stews.</p>
+      <p><strong>Location:</strong> Commonly found in local homes and markets around Dire Dawa.Famous place include <em>"ehetemamachochu"</em> in number wan</p>
+    </div>
+  </div>
+
+  <div class="food-item" id="dench">
+    <img src="dench.jpg" alt="Dench Flatbread" />
+    <div class="food-text">
+      <h2>Dench</h2>
+      <p>Dench is a popular fresh salad-like dish in Dire Dawa, loved for its vibrant flavors and refreshing taste. It’s a staple at local gatherings and a favorite street food. You can find the best Dench at famous spots like Axste Dinch in Sabiyan and Yemegnu Dench in Gnedekore, where vendors serve it with authentic spices and fresh ingredients.</p>
+      <p><strong>Location:</strong> Available at street vendors and famous places are <em>"axste dench" in sabiyan and "yimegnu dench" in genedkore.</em></p>
+    </div>
+  </div>
+
+  <div class="food-item" id="fetira">
+    <img src="fetira.jpg" alt="Fetira Bread" />
+    <div class="food-text">
+      <h2>Fetira</h2>
+      <p>Fetira is a layered flaky bread,egg and vegetables, often enjoyed with honey, butter, or tea. It has a tender, buttery texture that melts in your mouth, making it a favorite for breakfast or snacks in Dire Dawa.</p>
+      <p><strong>Location:</strong> Commonly served at breakfast spots and cafes throughout Dire Dawa.</p>
+    </div>
+  </div>
+
+  <button class="back-button" onclick="location.href='index.html#items'">Back to Items & Prices</button>
+
+</body>
+</html>

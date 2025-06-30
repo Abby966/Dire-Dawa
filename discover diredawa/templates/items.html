@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Items & Prices</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <h1>Available Items in Dire Dawa</h1>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/items">Items</a>
+        <a href="/explore">Explore</a>
+        <a href="/info">Info</a>
+    </nav>
+
+    <ul>
+        {% for item in items %}
+            <li>
+                <strong>{{ item.name }}</strong> – {{ item.price }} birr<br>
+                <small>{{ item.description }}</small>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
