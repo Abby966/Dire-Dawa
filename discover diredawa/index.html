@@ -1,0 +1,414 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Discover Dire Dawa — Explore, Shop, Stay</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="description" content="Discover Dire Dawa: explore markets, unique foods, hotels, and essential info." />
+  <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Page-specific enhancements (complement styles.css) -->
+  <style>
+    /* Softer light background instead of near-black */
+    body{background:linear-gradient(180deg,#eef2ff,#dbeafe)}
+    body, h1, h2, h3, h4, h5, h6, p, a, li, span, div {
+      color: #000 !important;
+    }
+    .hero-title {
+      font-size: clamp(32px, 6vw, 64px);
+      font-weight: 800;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      display: inline-block;
+      animation: marquee 8s linear infinite;
+    }
+    @keyframes marquee {
+      0% { transform: translateX(-100%); }
+      100% { transform: translateX(100%); }
+    }
+    .hero-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+  
+    .market-header {
+      background: linear-gradient(90deg, #ff9800, #ffb74d);
+      padding: 50px 32px;
+      text-align: right;
+      border-radius: 20px 0 0 20px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.25);
+      color: #fff;
+      animation: fadeSlideIn 1s ease forwards;
+      width: 100vw;
+      max-width: 100vw;
+      margin: 0;
+      position: relative;
+      left: 50%;
+      right: 50%;
+      margin-left: -50vw;
+    }
+    
+    .market-header h2 {
+      font-size: clamp(32px, 5vw, 56px);
+      margin: 0;
+      font-weight: 900;
+      letter-spacing: 1px;
+      text-shadow: 2px 3px 6px rgba(0,0,0,0.2);
+    }
+    
+    .market-header p {
+      font-size: clamp(16px, 2vw, 20px);
+      margin-top: 12px;
+      opacity: 0.95;
+      line-height: 1.6;
+      max-width: 800px;
+      margin-left: auto;
+      text-shadow: 1px 2px 4px rgba(0,0,0,0.15);
+    }
+    
+    @keyframes fadeSlideIn {
+      0% { opacity: 0; transform: translateX(30px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    
+    /* Headline: centered + animated left→right entrance */
+    .hero-head{display:grid;place-items:center;text-align:center;margin-top:8px}
+    .hero-title{font-size:clamp(32px,6vw,60px);font-weight:800;letter-spacing:.3px}
+    .hero-title.motion{opacity:0;transform:translateX(-40px);animation:heroSlide .9s ease forwards}
+    @keyframes heroSlide{to{opacity:1;transform:none}}
+
+    /* Full-screen hero slider */
+    .why-visit{padding:0}
+    .slide-container{height:100vh;border-radius:0;border:none}
+    .slide img{height:100vh}
+    .slide-text{max-width:min(820px,92%);bottom:6vh;color: #ff9800;}
+    .slide-gradient{position:absolute;inset:0;background:linear-gradient(180deg,#ff9800(0, 0, 0, 0.05),#ff9800(0,0,0,.65) 70%)}
+
+    /* Dots & progress */
+    .dots{position:absolute;left:50%;transform:translateX(-50%);bottom:20px;display:flex;gap:10px;z-index:5}
+    .dot{width:10px;height:10px;border-radius:999px;background:rgba(255,255,255,.55);border:1px solid rgba(255,255,255,.6);opacity:.7;cursor:pointer}
+    .dot.active{background:#fff;opacity:1}
+    .progress{position:absolute;left:0;bottom:0;height:3px;width:0;background:var(--brand);box-shadow:0 0 12px rgba(34,211,238,.65);transition:width var(--dur) linear}
+
+    /* Reveal on scroll */
+    .reveal{opacity:0;transform:translateY(14px);transition:opacity .6s ease,transform .6s ease}
+    .reveal.in{opacity:1;transform:none}
+
+    /* Items & Prices: 3-up full-width row that fills the screen width */
+    .items-section{padding:0}
+    .items-section h1{padding:16px}
+    .items-scroll{grid-template-columns:repeat(3,minmax(0,1fr));gap:0}
+    .item-card{border-radius:0;border:none}
+    .item-card + .item-card{border-left:1px solid rgba(255,255,255,.08)}
+    .item-card img{height:34vh}
+    @media (max-width:1000px){.items-scroll{grid-template-columns:1fr 1fr}.item-card img{height:30vh}}
+    @media (max-width:640px){.items-scroll{grid-template-columns:1fr}.item-card img{height:240px}}
+
+    /* Explore: fix hidden text + improved layout (image then text) */
+    .explore-section{padding:30px 0}
+    .explore-list{display:grid;gap:16px}
+    .explore-card{display:grid;grid-template-columns:minmax(300px,520px) 1fr;align-items:stretch;background:#fff;border-radius:20px;overflow:hidden;box-shadow:0 10px 30px rgba(0,0,0,.12)}
+    .explore-card img{width:100%;height:100%;object-fit:cover}
+    .explore-copy{padding:22px}
+    .explore-copy h3{color:#111827;margin:0 0 6px}
+    .explore-copy p{color:#4b5563;margin:0}
+    @media (max-width:900px){.explore-card{grid-template-columns:1fr}.explore-card img{height:240px}}
+
+    /* Hotels: full-bleed feature blocks (image fills screen width then text) */
+    .hotel-feature{margin:28px 0;background:#fff;border-radius:22px;overflow:hidden;box-shadow:0 16px 40px rgba(0,0,0,.15)}
+    .hotel-feature img{width:100%;height:65vh;object-fit:cover;display:block}
+    .hotel-copy{padding:18px 18px 26px}
+    .hotel-copy h3{color:#0f172a;margin:6px 0 8px}
+    .hotel-copy p{color:#4b5563}
+    
+    /* Respect reduced motion */
+    @media (prefers-reduced-motion: reduce){
+      .reveal{transition:none}
+      .slide-container,.slide-text,.prev,.next,.progress{transition:none}
+      .hero-title.motion{animation:none;opacity:1;transform:none}
+    }
+  </style>
+</head>
+<body>
+  <div class="container hero-head">
+    <nav role="navigation" aria-label="Primary" style="width:100%">
+      <div class="market-header" style="background: linear-gradient(90deg, #ff9800, #ffb74d); padding: 50px 32px; text-align: right; border-radius: 20px 0 0 20px; box-shadow: 0 8px 24px rgba(0,0,0,0.25); color: #fff; animation: fadeSlideIn 1s ease forwards; width: 100vw; max-width: 100vw; margin: 0; position: relative; left: 50%; right: 50%; margin-left: -50vw;">
+        <a href="#" aria-current="page" style="text-decoration: none; color: inherit; margin: 0 10px;">Home</a>
+        <a href="#items" style="text-decoration: none; color: inherit; margin: 0 10px;">Items & Prices</a>
+        <a href="#explore" style="text-decoration: none; color: inherit; margin: 0 10px;">Explore</a>
+        <a href="#info" style="text-decoration: none; color: inherit; margin: 0 10px;">Info</a>
+      </div>
+      
+    </nav>
+
+    <h1 class="hero-title">Welcome to Discover Dire Dawa</h1>
+    <h2  style="text-align:center; color:#000">እንኳን ወደ ውቧ ከተማ ድሬዳዋ በሰላም መጣችሁ፡፡</h2>
+    <p class="reveal" style="max-width:980px">Discover local treasures, explore beautiful places, and get useful tips for your visit. Dire Dawa – Ethiopia’s Cultural Jewel. Tucked between sun-kissed hills and historic trade routes, Dire Dawa is a vibrant blend of art, heritage, warmth, and timeless charm.
+      From the colorful markets echoing with stories of generations, to colonial-era architecture and the scent of fresh spices in the air — Dire Dawa is where tradition dances with modern life. Come for the landscapes, stay for the people. Discover coffee ceremonies under jacaranda trees, handwoven treasures, and a heartbeat that celebrates Ethiopia’s diversity. This isn’t just a destination. This is Dire Dawa. Your Ethiopian escape.</p>
+  </div>
+
+  <!-- Full-screen Hero Slider (Why Visit) -->
+  <section class="why-visit" aria-label="Why Visit Dire Dawa">
+    <div class="slide-container" data-autoplay="true" data-interval="6000">
+      <div class="progress" aria-hidden="true"></div>
+
+      <div class="slide active" role="group" aria-roledescription="slide" aria-label="1 of 3">
+        <span class="slide-gradient" aria-hidden="true"></span>
+        <img src="train.jpg" alt="Historic railway in Dire Dawa" loading="eager" />
+        <div class="slide-text">
+          <h2>Historical Railway System</h2>
+          <p>Built in the early 1900s, Dire Dawa’s railway is a timeless link between Ethiopia and the Red Sea …</p>
+        </div>
+      </div>
+
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="2 of 3">
+        <span class="slide-gradient" aria-hidden="true"></span>
+        <img src="kf.jpeg" alt="Colorful markets of Dire Dawa" loading="lazy" />
+        <div class="slide-text">
+          <h2>Vibrant Markets</h2>
+          <p>Experience the bustling Ashewa and Kefira markets with fresh spices, fabrics, and handmade crafts.</p>
+        </div>
+      </div>
+
+      <div class="slide" role="group" aria-roledescription="slide" aria-label="3 of 3">
+        <span class="slide-gradient" aria-hidden="true"></span>
+        <img src="diregirl.jpeg" alt="Smiling people of Dire Dawa" loading="lazy" />
+        <div class="slide-text">
+          <h2>The People of Love</h2>
+          <p>Warm, welcoming, and endlessly hospitable — kindness in every smile and gesture.</p>
+        </div>
+      </div>
+
+      <button class="prev" aria-label="Previous slide">&#10094;</button>
+      <button class="next" aria-label="Next slide">&#10095;</button>
+
+      <div class="dots" role="tablist" aria-label="Choose slide">
+        <button class="dot active" role="tab" aria-label="Go to slide 1" aria-selected="true"></button>
+        <button class="dot" role="tab" aria-label="Go to slide 2" aria-selected="false"></button>
+        <button class="dot" role="tab" aria-label="Go to slide 3" aria-selected="false"></button>
+      </div>
+    </div>
+  </section>
+
+  <!-- Items & Prices (3 cards across full width) -->
+  <div class="items-section" id="items">
+    <h1 class="reveal">Items & Prices</h1>
+    <div class="items-scroll reveal">
+      <a href="shiti.html" class="item-card" aria-label="Details about Shiti Dress">
+        <img src="shiti.jpg" alt="Shiti Dress" loading="lazy" />
+        <div class="item-info">
+          <p>Shiti dress</p>
+          <p class="item-price">Price:300-350 birr</p>
+          <p class="item-location">Location: Ashewa Market</p>
+        </div>
+      </a>
+
+      <a href="dessert.html" class="item-card" aria-label="Details about Dire Dawa Desserts">
+        <img src="halwa.jpg" alt="Dire Dawa Dessert" loading="lazy" />
+        <div class="item-info">
+          <p>Local Desserts</p>
+          <p class="item-price">Price: 80-120 birr</p>
+          <p class="item-location">Location: Kefira Market</p>
+        </div>
+      </a>
+
+      <a href="unique_foods.html" class="item-card" aria-label="Details about Unique Foods of Dire Dawa">
+        <img src="uni.jpg" alt="Unique Foods" loading="lazy" />
+        <div class="item-info">
+          
+          <p class="item-name">Unique Foods</p>
+          <p class="item-price">Price:Starting from 60 birr</p>
+          <p class="item-description">Discover Shimo, Dench, Fetira and more</p>
+          <p class="item-location">Dire Dawa Specialties</p>
+        </div>
+      </a>
+    </div>
+  </div>
+
+  <!-- Explore (image then text, fixed visibility) -->
+  <section class="explore-section" id="explore">
+    <h1 class="reveal">Explore Dire Dawa</h1>
+
+    <div class="explore-list">
+      <article class="explore-card reveal">
+        <img src="ashew.jpg" alt="Ashewa Market Image" />
+        <div class="explore-copy">
+          <h3>Ashewa Market</h3>
+          <p>A bustling market filled with vibrant fabrics, spices, and traditional Ethiopian crafts …</p>
+          <p style="margin-top:10px"><a href="ashewa.html" class="btn">See details →</a></p>
+        </div>
+      </article>
+
+      <article class="explore-card reveal">
+        <img src="kf.jpeg" alt="Kefira Market Image" />
+        <div class="explore-copy">
+          <h3>Kefira Market</h3>
+          <p>Colorful stalls, friendly vendors, fresh produce, baskets, and local delicacies.</p>
+          <p style="margin-top:10px"><a href="kefira.html" class="btn">See details →</a></p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <!-- Info -->
+  <section class="info-section" id="info">
+    <h1 class="reveal">Important Info</h1>
+
+    <section class="reveal">
+      <h2>City Info</h2>
+      <p><strong>Current Weather:</strong> Mostly sunny, around 32°C during the day.</p>
+      <p><strong>Best Time to Visit:</strong> October to February (cooler and dry).</p>
+    </section>
+
+    <div class="info-category reveal">
+      <h2>Best Hotels in Dire Dawa</h2>
+
+      <article class="hotel-feature reveal">
+        <img src="ras.jpg" alt="Dire Dawa Ras Hotel" />
+        <div class="hotel-copy">
+          <h3>Dire Dawa Ras Hotel</h3>
+          <p>Ras Hotel is a 4-star standard hotel in Dire Dawa</p>
+          <p style="margin-top:8px"><a href="https://www.bing.com/maps?&ty=18&q=ras%20hotel%20dire%20dawa&ss=ypid.YN8055x6465649859026860905&segment=Hotel&mb=9.591499~41.854445~9.585712~41.863693&description=Kezira%2C%20Dire%20Dawa%C2%B7Hotel&cardbg=%23D161C4&tt=Ras%20Hotel&tsts0=%2526ty%253D18%2526q%253Dras%252520hotel%252520dire%252520dawa%2526ss%253Dypid.YN8055x6465649859026860905%2526segment%253DHotel%2526mb%253D9.591499~41.854445~9.585712~41.863693%2526description%253DKezira%25252C%252520Dire%252520Dawa%2525C2%2525B7Hotel%2526cardbg%253D%252523D161C4&tstt0=Ras%20Hotel&cp=9.588722~41.858634&lvl=19.399727&pi=0&ftst=0&ftics=False&v=2&sV=2&form=S00027" target="_blank" rel="noopener">📍 Location</a></p>
+        </div>
+      </article>
+
+      <article class="hotel-feature reveal">
+        <img src="Bcap.jpg" alt="BCapital Hotel" />
+        <div class="hotel-copy">
+          <h3>BCapital Hotel</h3>
+          <p>BCapital Hotel is a 4-star luxury hotel</p>
+          <p style="margin-top:8px">📍 <a href="https://maps.app.goo.gl/fnaWfatmwBG3fvSv5" target="_blank" rel="noopener">Location</a></p>
+        </div>
+      </article>
+
+      <article class="hotel-feature reveal">
+        <img src="mm.jpg" alt="MM Hotel Dire Dawa" />
+        <div class="hotel-copy">
+          <h3>MM Hotel</h3>
+          <p>MM Hotel is a modern 3-star hotel</p>
+          <p style="margin-top:8px">📍 <a href="https://www.bing.com/maps?&ty=18&q=MM%20Hotel%2C%20Sabean%20Sabean%2C%20Dire%20Dawa%2C%20ET&ss=ypid.YN8055x2816294769595027585&mb=9.608652~41.832483~9.597079~41.850979&description=Sabean%20Sabean%2C%20Dire%20Dawa%2C%20Dire%20Dawa%C2%B7Hotel&cardbg=%23D161C4&tt=MM%20Hotel&tsts1=%2526ty%253D18%2526q%253DMM%252520Hotel%25252C%252520Sabean%252520Sabean%25252C%252520Dire%252520Dawa%25252C%252520ET%2526ss%253Dypid.YN8055x2816294769595027585%2526mb%253D9.608652~41.832483~9.597079~41.850979%2526description%253DSabean%252520Sabean%25252C%252520Dire%252520Dawa%25252C%252520Dire%252520Dawa%2525C2%2525B7Hotel%2526cardbg%253D%252523D161C4&tstt1=MM%20Hotel&cp=9.602866~41.83641&lvl=16&pi=0&ftst=1&ftics=True&v=2&sV=2&form=S00027" target="_blank" rel="noopener">Location</a></p>
+        </div>
+      </article>
+    </div>
+
+    <div class="info-category reveal">
+      <h2>Dire Dawa Police</h2>
+      <p>The Dire Dawa Police Department is committed to maintaining peace, safety, and security …</p>
+      <p><strong>Contact Number:</strong> 025 111 1600</p>
+    </div>
+
+    <div class="info-category reveal">
+      <h2>Health Care Centers</h2>
+      <div class="hospital-cards">
+        <div class="hospital-card">
+          <h3>Dilchora Hospital</h3>
+          <p>Location: Central Dire Dawa, near City Hall</p>
+          <p>Phone: +251 91 573 5399</p>
+        </div>
+        <div class="hospital-card">
+          <h3>Maryam Work Hospital</h3>
+          <p>Location: Sabian Area, Dire Dawa</p>
+          <p>Phone: +251 90 677 7666</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-container">
+      <div class="footer-about">
+        <h3>Discover Dire Dawa</h3>
+        <p>We’re passionate about showcasing Dire Dawa’s culture, people, and unique experiences …</p>
+      </div>
+      <div class="footer-links">
+        <h4>Quick Links</h4>
+        <ul style="list-style:none;padding:0;margin:0">
+          <li><a href="#items">Items & Prices</a></li>
+          <li><a href="#explore">Explore</a></li>
+          <li><a href="#info">Info</a></li>
+        </ul>
+      </div>
+      <div class="footer-contact">
+        <h4>Contact</h4>
+        <p>Phone: +251 989900755</p>
+        <p>Email: abegailchanyalew6@gmail.com</p>
+        <p>Follow us:</p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; <span id="year"></span> Discover Dire Dawa. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Footer year
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Reveal on scroll
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); } });
+    },{threshold:.12});
+    document.querySelectorAll('.reveal').forEach(el=>io.observe(el));
+
+    // Slider logic with autoplay, dots, keyboard & swipe support
+    const slides = Array.from(document.querySelectorAll('.slide'));
+    const prevBtn = document.querySelector('.prev');
+    const nextBtn = document.querySelector('.next');
+    const dots = Array.from(document.querySelectorAll('.dot'));
+    const container = document.querySelector('.slide-container');
+    const progress = document.querySelector('.progress');
+    const interval = parseInt(container?.dataset.interval || '6000', 10);
+    let current = 0; let timer; let isHover = false;
+
+    function showSlide(i){
+      slides.forEach((s,idx)=>s.classList.toggle('active', idx===i));
+      dots.forEach((d,idx)=>{ d.classList.toggle('active', idx===i); d.setAttribute('aria-selected', idx===i ? 'true' : 'false'); });
+      current = i;
+      // Progress bar
+      progress.style.transition = 'none'; progress.style.width = '0';
+      requestAnimationFrame(()=>{
+        requestAnimationFrame(()=>{
+          progress.style.setProperty('--dur', interval+'ms');
+          progress.style.transition = `width ${interval}ms linear`;
+          progress.style.width = isHover ? '0' : '100%';
+        });
+      });
+    }
+
+    function next(){ showSlide((current+1)%slides.length); }
+    function prev(){ showSlide((current-1+slides.length)%slides.length); }
+
+    function play(){ if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return; timer = setInterval(next, interval); }
+    function stop(){ clearInterval(timer); }
+
+    nextBtn.addEventListener('click', ()=>{ stop(); next(); play(); });
+    prevBtn.addEventListener('click', ()=>{ stop(); prev(); play(); });
+    dots.forEach((d,idx)=> d.addEventListener('click', ()=>{ stop(); showSlide(idx); play(); }));
+
+    // Pause on hover
+    container.addEventListener('mouseenter', ()=>{ isHover = true; stop(); progress.style.width = '0'; });
+    container.addEventListener('mouseleave', ()=>{ isHover = false; play(); });
+
+    // Keyboard
+    window.addEventListener('keydown', (e)=>{
+      if(e.key==='ArrowRight') { stop(); next(); play(); }
+      if(e.key==='ArrowLeft')  { stop(); prev(); play(); }
+    });
+
+    // Basic swipe support
+    let startX = 0; let dx = 0;
+    container.addEventListener('touchstart', (e)=>{ startX = e.touches[0].clientX; stop(); }, {passive:true});
+    container.addEventListener('touchmove', (e)=>{ dx = e.touches[0].clientX - startX; }, {passive:true});
+    container.addEventListener('touchend', ()=>{ if(Math.abs(dx) > 40){ dx < 0 ? next() : prev(); } play(); dx=0; }, {passive:true});
+
+    // Start
+    showSlide(0); play();
+  </script>
+</body>
+</html>

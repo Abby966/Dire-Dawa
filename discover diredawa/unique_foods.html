@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Unique Foods of Dire Dawa</title>
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    body{font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#0b0f14;color:#e5e7eb;margin:0}
+    .wrap{max-width:900px;margin:0 auto;padding:40px 16px 60px}
+    h1{text-align:center;margin-bottom:24px;color:#22d3ee}
+    .food-item{display:flex;gap:22px;margin-bottom:24px;align-items:center;border-radius:16px;box-shadow:0 10px 28px rgba(0,0,0,.25);padding:16px;background:linear-gradient(180deg, rgba(255,255,255,.04), transparent);border:1px solid rgba(255,255,255,.08)}
+    .food-item:hover{transform:translateY(-1px)}
+    .food-item img{width:220px;height:160px;object-fit:cover;border-radius:14px;border:1px solid rgba(255,255,255,.08)}
+    .food-text h2{margin:0 0 6px;color:#a5b4fc}
+    .food-text p{margin:6px 0;color:#cbd5e1;line-height:1.7}
+    .back-button{background:#22d3ee;color:#001018;border:none;padding:12px 24px;border-radius:999px;font-weight:700;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+    .back-button:hover{filter:brightness(.95)}
+    @media (max-width:800px){.food-item{flex-direction:column}.food-item img{width:100%;height:220px}}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Unique Foods of Dire Dawa</h1>
+
+    <div class="food-item" id="shimo">
+      <img src="shimo.jpg" alt="Shimo Porridge" />
+      <div class="food-text">
+        <h2>Shimo</h2>
+        <p>Shimo is a traditional Ethiopian porridge</p>
+        <p><strong>Location:</strong> Commonly found in local homes and markets around Dire Dawa. Famous place include <em>"ehetemamachochu"</em> in number wan</p>
+      </div>
+    </div>
+
+    <div class="food-item" id="dench">
+      <img src="dench.jpg" alt="Dench Flatbread" />
+      <div class="food-text">
+        <h2>Dench</h2>
+        <p>Dench is a popular fresh salad-like dish</p>
+        <p><strong>Location:</strong> Available at street vendors and famous places are <em>"axste dench" in sabiyan and "yimegnu dench" in genedkore.</em></p>
+      </div>
+    </div>
+
+    <div class="food-item" id="fetira">
+      <img src="fetira.jpg" alt="Fetira Bread" />
+      <div class="food-text">
+        <h2>Fetira</h2>
+        <p>Fetira is a layered flaky bread with egg and veggies /p>
+        <p><strong>Location:</strong> Commonly served at breakfast spots and cafes throughout Dire Dawa.</p>
+      </div>
+    </div>
+
+    <button class="back-button" onclick="location.href='index.html#items'">Back to Items & Prices</button>
+  </div>
+</body>
+</html>
